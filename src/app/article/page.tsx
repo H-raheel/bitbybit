@@ -13,19 +13,10 @@ interface Article {
     link: string;
     snippet: string;
   }
-  interface ProgressData {
-    userId: string;
-    articleId: string;
-    topic: string;
-    articleTitle: string;
-    articleLink: string;
-    articleType: string;
-    date: Date;
-  }
-  
+ 
 
 const Page: React.FC = () => {
-  const { logOut, user } = useAuth();
+  const { user } = useAuth();
   const [loading, setLoading] = useState(false);
   const [articles, setArticles] = useState<Article[]>([]);
   const [currentTopic, setCurrentTopic] = useState<string>("");
@@ -56,33 +47,7 @@ const Page: React.FC = () => {
       setLoading(false);
     }
   };
-  const trackProgress = async (article: Article) => {
-    if (!user?.uid) return;
-    
-    try {
-      const response = await fetch('/api/progress', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          userId: user.uid,
-          articleId: article.link,
-          topic: currentTopic,
-          articleTitle: article.title,
-          articleLink: article.link,
-          articleType: currentTopic, // or derive from content
-          date: new Date(),
-        }),
-      });
-  
-      if (!response.ok) {
-        throw new Error('Failed to save progress');
-      }
-    } catch (error) {
-      console.error('Error saving progress:', error);
-    }
-  };
+
   const renderArticles = () => {
     if (!articles.length) return null;
   
@@ -99,8 +64,7 @@ const Page: React.FC = () => {
               target="_blank"
               rel="noopener noreferrer"
               onClick={async (e) => {
-                e.preventDefault();
-                await trackProgress(article);
+                e.preventDefault()
                 window.open(article.link, '_blank');
               }}
               className="flex flex-col p-6 rounded-xl bg-white/10 hover:bg-white/15 transition-all duration-300 transform hover:-translate-y-1 hover:shadow-xl"

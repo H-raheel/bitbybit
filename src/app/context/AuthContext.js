@@ -41,7 +41,7 @@ export function AuthProvider({ children }) {
     });
 
     return () => unsubscribe();
-  }, [onAuthStateChanged]);
+  }, []);
 
   const signIn = async () => {
     try {

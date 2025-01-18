@@ -14,14 +14,7 @@ const Page: React.FC = () => {
   const [allTopics, setAllTopics] = useState<string[]>([]);
   const [selectedArray, setSelectedArray] = useState<string[]>([]);
   const [isSaving, setIsSaving] = useState(false);
-  // Handle user logout
-  const handleLogout = async () => {
-    try {
-      await logOut();
-    } catch (error) {
-      console.error("Logout error:", error);
-    }
-  };
+ 
 
   // Fetch topics from the API
   const fetchTopics = async () => {

@@ -6,6 +6,19 @@ interface UserDocument {
   topics: string[];
 }
 
+interface SearchResult {
+  title: string;
+  link: string;
+  snippet: string;
+}
+
+interface FormattedSearchResult {
+  index: number;
+  title: string;
+  link: string;
+  snippet: string;
+}
+
 const API_KEY = process.env.NEXT_GOOGLE_API_KEY;
 const CX = process.env.NEXT_GOOGLE_CX;
 const MONGODB_URI = process.env.NEXT_MONGODB_URI;
@@ -54,11 +67,11 @@ export async function GET(request: Request) {
     return NextResponse.json({
       message: "Search Results:",
       topic,
-      results: results.map((item: any, index: number) => ({
+      results: results.map((item: SearchResult, index: number): FormattedSearchResult => ({
         index: index + 1,
         title: item.title,
         link: item.link,
-        snippet:item.snippet
+        snippet: item.snippet
       })),
     });
 

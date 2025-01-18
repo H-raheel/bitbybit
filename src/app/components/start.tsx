@@ -3,7 +3,7 @@ import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 const LandingComponent = () => {
-  const [expanded, setExpanded] = useState(false);
+ 
   const [loading, setLoading] = useState(false);
   const { signIn } = useAuth();
   const { user } = useAuth();
