@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 :root {
-  --background: #ffffff;
+  --background: #000000;
   --foreground: #171717;
 }
 
@@ -18,4 +18,72 @@ body {
   color: var(--foreground);
   background: var(--background);
   font-family: Arial, Helvetica, sans-serif;
+}
+
+.hero-subtitle-text {
+  background: -webkit-linear-gradient(
+      90deg,
+      #4dc1d8 0.01%,
+      #ba9cff 50.01%,
+      #802bca
+    ),
+    -webkit-linear-gradient(0deg, hsla(0, 0%, 100%, 0.4), hsla(0, 0%, 100%, 0.4));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.hero-subtitle-gradient {
+  background: linear-gradient(
+    180deg,
+    hsla(0, 0%, 100%, 0.05),
+    hsla(0, 0%, 100%, 0)
+  );}
+  bg-clip-text bg-gradient-to-r from-cyan-500 to-purple-500
+  
+.button-border-gradient {
+  position: relative;
+  z-index: 1;
+  background: linear-gradient(
+    180deg,
+    hsla(0, 0%, 100%, 0.1),
+    hsla(0, 0%, 100%, 0)
+  );
+}
+
+.button-border-gradient::before {
+  content: "";
+  position: absolute;
+  z-index: 1;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1px; /* Adjust the padding to control the border thickness */
+  background: linear-gradient(
+    90deg,
+    #4dc1d8 0.01%,
+    #ba9cff 50.01%,
+    #802bca
+  );
+}
+
+.hover\:button-gradient-hover:hover {
+  box-shadow: inset 0 -6px 17px rgba(156, 178, 255, 0.3),
+    inset 0 6px 17px rgba(229, 156, 255, 0.3);
+}
+.button-gradient-hover {
+  box-shadow: inset 0 -6px 17px rgba(156, 178, 255, 0.3),
+    inset 0 6px 17px rgba(229, 156, 255, 0.3);
+}
+.button-border-gradient:hover {
+  --tw-bg-opacity: 0;
+}
+
+.hover\:shadow-none:hover {
+  --tw-shadow: 0 0 #0000;
+  --tw-shadow-colored: 0 0 #0000;
+}
+.shadow-button {
+  --tw-shadow: inset 0px -6px 15px rgba(156, 178, 255, 0.25),
+    inset 0px 6px 15px rgba(229, 156, 255, 0.25);
+  --tw-shadow-colored: inset 0px -6px 15px var(--tw-shadow-color),
+    inset 0px 6px 15px var(--tw-shadow-color);
 }
