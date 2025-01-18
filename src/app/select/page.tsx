@@ -9,7 +9,7 @@ import { useState } from "react";
 
 const Page: React.FC = () => {
   const router=useRouter();
-  const { logOut, user } = useAuth();
+  const { user } = useAuth();
   const [moreLoading, setMoreLoading] = useState(false);
   const [allTopics, setAllTopics] = useState<string[]>([]);
   const [selectedArray, setSelectedArray] = useState<string[]>([]);
